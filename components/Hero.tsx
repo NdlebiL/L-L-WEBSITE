@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 const fadeUp = (delay = 0) => ({
@@ -11,24 +11,32 @@ const fadeUp = (delay = 0) => ({
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null)
+  const [videoFailed, setVideoFailed] = useState(false)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0.5])
   const y              = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
 
   return (
     <section id="home" ref={ref} className="hero-section">
-      {/* Parallax video */}
+      {/* Parallax video / gradient fallback */}
       <motion.div style={{ y, position: 'absolute', inset: 0, zIndex: 0 }}>
-        <video
-          className="hero-vid"
-          autoPlay
-          muted
-          loop
-          playsInline
-          suppressHydrationWarning
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
+        {videoFailed ? (
+          <div className="hero-vid" style={{
+            background: 'linear-gradient(135deg, #0A0A0A 0%, #161616 50%, #0d0d0d 100%)',
+          }} />
+        ) : (
+          <video
+            className="hero-vid"
+            autoPlay
+            muted
+            loop
+            playsInline
+            suppressHydrationWarning
+            onError={() => setVideoFailed(true)}
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
+        )}
       </motion.div>
 
       {/* Overlay */}

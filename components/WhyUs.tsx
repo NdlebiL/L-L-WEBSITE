@@ -21,8 +21,11 @@ function AnimatedCounter({
     if (!inView) return
     const duration = 1800
     const start = Date.now()
+    let rafId: number
+    let cancelled = false
 
     const tick = () => {
+      if (cancelled) return
       const elapsed = Date.now() - start
       const progress = Math.min(elapsed / duration, 1)
       const eased = 1 - Math.pow(1 - progress, 3)
@@ -30,10 +33,14 @@ function AnimatedCounter({
         ? parseFloat((eased * target).toFixed(1))
         : Math.floor(eased * target)
       setCount(value)
-      if (progress < 1) requestAnimationFrame(tick)
+      if (progress < 1) rafId = requestAnimationFrame(tick)
     }
 
-    requestAnimationFrame(tick)
+    rafId = requestAnimationFrame(tick)
+    return () => {
+      cancelled = true
+      cancelAnimationFrame(rafId)
+    }
   }, [inView, target, isFloat])
 
   return (

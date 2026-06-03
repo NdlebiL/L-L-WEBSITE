@@ -26,13 +26,19 @@ const INITIAL: FormData = {
 }
 
 export default function Booking() {
-  const [form, setForm]           = useState<FormData>(INITIAL)
-  const [showModal, setShowModal] = useState(false)
+  const [form, setForm]             = useState<FormData>(INITIAL)
+  const [showModal, setShowModal]   = useState(false)
+  const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null)
 
   useEffect(() => {
     const handler = (e: Event) => {
-      const { pickup, destination, date, passengers } = (e as CustomEvent).detail
-      setForm(prev => ({ ...prev, pickup, destination, date, passengers }))
+      const detail = (e as CustomEvent).detail as Partial<FormData>
+      setForm(prev => ({
+        ...prev,
+        ...Object.fromEntries(
+          Object.entries(detail).filter(([, v]) => v !== undefined && v !== '')
+        ),
+      }))
     }
     window.addEventListener('prefill-booking', handler)
     return () => window.removeEventListener('prefill-booking', handler)
@@ -60,7 +66,9 @@ export default function Booking() {
       `*Luggage:* ${form.luggage}\n` +
       `*Notes:* ${form.notes || 'None'}`
     )
-    window.open(`https://wa.me/${COMPANY.whatsapp}?text=${text}`, '_blank')
+    const url = `https://wa.me/${COMPANY.whatsapp}?text=${text}`
+    const opened = window.open(url, '_blank')
+    setWhatsappUrl(opened ? null : url)
     setShowModal(true)
     setForm(INITIAL)
   }
@@ -250,14 +258,29 @@ export default function Booking() {
               <div className="modal-ico">✓</div>
               <h3>Booking Request Sent</h3>
               <p>
-                WhatsApp has opened with your booking details. We&rsquo;ll confirm your
-                booking as soon as possible.
+                {whatsappUrl
+                  ? "Your browser blocked the WhatsApp popup. Tap the button below to open it manually."
+                  : "WhatsApp has opened with your booking details. We’ll confirm your booking as soon as possible."}
               </p>
+              {whatsappUrl && (
+                <motion.a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-gold"
+                  style={{ display: 'inline-block', marginBottom: '0.75rem' }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
+                >
+                  Open WhatsApp →
+                </motion.a>
+              )}
               <motion.button
                 className="btn btn-gold"
+                style={whatsappUrl ? { background: 'transparent', color: '#C9A84C', border: '1.5px solid rgba(201,168,76,0.4)' } : {}}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
-                onClick={() => setShowModal(false)}
+                onClick={() => { setShowModal(false); setWhatsappUrl(null) }}
               >
                 Done
               </motion.button>
