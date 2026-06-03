@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { COMPANY } from '@/lib/data'
+import { LogoIcon } from '@/components/Logo'
 
 const links = [
   { href: '#services',     label: 'Services' },
@@ -34,7 +34,7 @@ export default function Navbar() {
         <div className="container">
           <div className="nav-wrap">
             <a href="#" className="logo">
-              <span className="logo-name">{COMPANY.name.split(' Shuttle')[0]}</span>
+              <LogoIcon size={38} />
               <span className="logo-sub">Shuttle Services</span>
             </a>
 

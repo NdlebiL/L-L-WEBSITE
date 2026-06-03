@@ -17,19 +17,19 @@ export const SERVICES = [
     icon: '🚐',
     title: 'Local Passenger Transport',
     description:
-      'Reliable daily transport within Mthatha and surrounding areas. Whether it\'s a daily commute or a one-off trip, we get you there safely and on time.',
+      'Reliable daily transport within Mthatha and surrounding areas. Whether it\'s a daily commute or a one off trip, we get you there safely and on time.',
   },
   {
     icon: '🛣',
     title: 'Long Distance & Intercity',
     description:
-      'Comfortable, door-to-door long-distance trips between cities. Experienced drivers, air-conditioned vehicles, and fixed transparent pricing.',
+      'Comfortable, door to door long distance trips between cities. Experienced drivers, air conditioned vehicles, and fixed transparent pricing.',
   },
   {
     icon: '📋',
     title: 'Monthly Transport Contracts',
     description:
-      'Dedicated monthly transport arrangements for individuals, employees, and businesses. Consistent, dependable, and cost-effective.',
+      'Dedicated monthly transport arrangements for individuals, employees, and businesses. Consistent, dependable, and cost effective.',
   },
   {
     icon: '📦',
@@ -41,13 +41,13 @@ export const SERVICES = [
     icon: '✈',
     title: 'Airport & Event Transport',
     description:
-      'Professional airport transfers with real-time flight monitoring. Weddings, galas, conferences — we ensure every guest arrives in style.',
+      'Professional airport transfers with real time flight monitoring. Weddings, galas, conferences we ensure every guest arrives in style.',
   },
   {
     icon: '🚗',
     title: 'Private Hire & Scheduled',
     description:
-      'Flexible private hire for personal trips and scheduled routes. Book once or set up recurring transport — fully tailored to your schedule.',
+      'Flexible private hire for personal trips and scheduled routes. Book once or set up recurring transport fully tailored to your schedule.',
   },
 ]
 
@@ -77,7 +77,7 @@ export const FEATURES = [
   {
     icon: '🌿',
     title: 'Premium Comfort',
-    desc: 'Clean, air-conditioned vehicles with ample luggage space and attentive service.',
+    desc: 'Clean, air conditioned vehicles with ample luggage space and attentive service.',
   },
 ]
 
@@ -91,7 +91,7 @@ export const FLEET = [
   {
     icon: '🚐',
     name: 'Luxury Van',
-    desc: 'Full-size van ideal for families, small groups, and airport runs.',
+    desc: 'Full size van ideal for families, small groups, and airport runs.',
     capacity: '4–7 Passengers',
   },
   {
@@ -105,23 +105,23 @@ export const FLEET = [
 export const TESTIMONIALS = [
   {
     stars: 5,
-    text: '"L & L made our airport transfer completely stress-free. The driver was early, professional, and helped with all our luggage. Will absolutely book again."',
-    name: 'Sarah M.',
+    text: '"L & L made our airport transfer completely stress free. The driver was early, professional, and helped with all our luggage. Will absolutely book again."',
+    name: 'Mr Ndlebi',
     role: 'Frequent Traveller',
+    initial: 'L',
+  },
+  {
+    stars: 5,
+    text: '"As an attorney, punctuality is non-negotiable court appearances cannot wait. L & L transports me and my clients with absolute reliability and discretion. Professional, always on time, and I trust them completely with my most important appointments."',
+    name: 'Sora',
+    role: 'Attorney',
     initial: 'S',
   },
   {
     stars: 5,
-    text: '"We used L & L for our company conference transfers. Impeccable service — always on time, smart presentation, and the vehicles were immaculate."',
-    name: 'Thabo K.',
-    role: 'Operations Manager',
-    initial: 'T',
-  },
-  {
-    stars: 5,
-    text: '"Booked L & L for our wedding shuttle. Guests were absolutely delighted — professional, elegant, and everything ran like clockwork. A perfect 10."',
-    name: 'Ama & Liam',
-    role: 'Wedding Couple',
+    text: '"Having a monthly contract with L & L has been a game changer for my family. I get to work on time every morning while my children are safely dropped at school. No stress, no planning just dependable, caring service every single day."',
+    name: 'Anathi',
+    role: 'Monthly Contract Client',
     initial: 'A',
   },
 ]

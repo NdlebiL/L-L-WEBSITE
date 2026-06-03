@@ -19,7 +19,7 @@ export default function CTABanner() {
           </h2>
           <p>
             Reliable, professional transport at your fingertips. Book instantly
-            or reach us directly — we&rsquo;re available 24 / 7.
+            or reach us directly. We&rsquo;re available 24 / 7.
           </p>
           <div className="cta-btns">
             <motion.a

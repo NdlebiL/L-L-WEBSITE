@@ -1,4 +1,5 @@
 import { COMPANY, SERVICES } from '@/lib/data'
+import { LogoIcon } from '@/components/Logo'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -9,8 +10,10 @@ export default function Footer() {
         <div className="footer-cols">
           {/* Brand */}
           <div className="f-brand">
-            <div className="f-brand-name">L & L</div>
-            <span className="f-brand-sub">Shuttle Services</span>
+            <div className="f-brand-logo">
+              <LogoIcon size={38} />
+              <span className="logo-sub">Shuttle Services</span>
+            </div>
             <p>
               Professional shuttle and transport services across Mthatha and
               surrounding areas. Safe, reliable, and always on time.

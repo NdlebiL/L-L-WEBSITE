@@ -46,7 +46,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p className="hero-sub" {...fadeUp(0.3)}>
-          Safe, reliable shuttle services across Mthatha and beyond —<br />
+          Safe, reliable shuttle services across Mthatha and beyond, <br />
           airports, long distance, corporate, and every occasion.
         </motion.p>
 

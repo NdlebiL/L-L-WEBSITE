@@ -29,7 +29,7 @@ export default function Services() {
           </h2>
           <div className="divider" />
           <p className="section-sub">
-            From daily commutes to long-distance journeys — reliable, professional transport
+            From daily commutes to long distance journeys, reliable, professional transport
             solutions tailored to every need in Mthatha and beyond.
           </p>
         </motion.div>

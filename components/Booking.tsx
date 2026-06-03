@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, FormEvent, ChangeEvent } from 'react'
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { COMPANY, SERVICES } from '@/lib/data'
 
@@ -28,6 +28,15 @@ const INITIAL: FormData = {
 export default function Booking() {
   const [form, setForm]           = useState<FormData>(INITIAL)
   const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const { pickup, destination, date, passengers } = (e as CustomEvent).detail
+      setForm(prev => ({ ...prev, pickup, destination, date, passengers }))
+    }
+    window.addEventListener('prefill-booking', handler)
+    return () => window.removeEventListener('prefill-booking', handler)
+  }, [])
 
   const today = new Date().toISOString().split('T')[0]
 
@@ -112,7 +121,7 @@ export default function Booking() {
                   <div className="cmethod-icon">🕐</div>
                   <div>
                     <div className="cmethod-label">Operating Hours</div>
-                    <div className="cmethod-val">24 / 7 — Including public holidays</div>
+                    <div className="cmethod-val">24 / 7 Including public holidays</div>
                   </div>
                 </div>
               </div>

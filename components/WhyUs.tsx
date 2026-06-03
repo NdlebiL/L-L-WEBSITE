@@ -71,7 +71,7 @@ export default function WhyUs() {
             </h2>
             <div className="divider" />
             <p className="section-sub">
-              We don&rsquo;t just move people — we move them safely, on time, and with
+              We don&rsquo;t just move people we move them safely, on time, and with
               the care and professionalism they deserve.
             </p>
             <div className="stats-2x2">
